@@ -41,7 +41,7 @@
 
     <div class="container d-flex align-items-center justify-content-between">
 
-      <a href="{{ path('app_homepage" class="logo d-flex align-items-center me-auto me-xl-0">
+      <a href="#" class="logo d-flex align-items-center me-auto me-xl-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="public/frontend/assets/img/logo_aid.png" style="position:absolute;" alt="">
       </a>
