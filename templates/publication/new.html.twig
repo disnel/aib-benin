@@ -1,0 +1,59 @@
+{% extends 'backend.html.twig' %}
+
+{% block stylesheet %}
+  {% include "_css_form.html.twig" %}
+{% endblock %}
+
+{% block content %}
+
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                {{ include('publication/_form.html.twig') }}
+            </div>
+        </div>
+    </section>
+    
+{% endblock %}
+
+{% block javascripts %}
+  {% include "_js_form.html.twig" %}
+
+   {{ tinymce_init({ ' use_callback_tinymce_init ' : true , ' theme ' : { ' simple ' : { ' menubar ' : false }}}) }}
+
+  <script>
+    function Add(i) {
+      $.ajax({
+        type: 'GET',
+        url: $('#urlimg').attr('data-urlImg'),
+        data: { 'cpt': i },
+        success: function (code_html, statut) {
+          $.each(code_html, function (index, value) {
+            $('#images_card').append(value);
+            // $('select').select2();
+          });
+
+          var $removeBtn = $('.btnDelete');
+          $removeBtn.each(function () {
+            var $btn = $(this);
+            $btn.on('click', function (e) {
+              e.preventDefault();
+              $('#ligne-' + $(this).attr('data-id')).remove();
+              // total();
+            });
+          });
+        // $('select').selectpicker();
+        }
+	    });
+    }
+
+    // Bouton ajoutant une ligne
+    i = 1;
+    $('#btnAdd').on('click', function (e) {
+        e.preventDefault();
+        i++;
+        Add(i);
+    });
+
+  </script>
+{% endblock %}

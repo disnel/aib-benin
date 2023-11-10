@@ -1,0 +1,160 @@
+
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="box box-primary">
+
+            <div class="box-header with-border">
+              <h3 class="box-title">Publication</h3>
+            </div>
+
+                {{ form_start(form) }}
+                    <div class="box-body">
+
+                        <div class="col-sm-12">
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    {{ form_widget(form.estSlide) }}
+                                    {{ form_label(form.estSlide) }}
+                                </div>
+                            </div> 
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    {{ form_widget(form.estActif) }}
+                                    {{ form_label(form.estActif) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    {{ form_widget(form.estMasque) }}
+                                    {{ form_label(form.estMasque) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    {{ form_widget(form.estArticle) }}
+                                    {{ form_label(form.estArticle) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                {{ form_label(form.menu) }}
+                                {{ form_widget(form.menu) }}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                {{ form_label(form.titre) }}
+                                {{ form_widget(form.titre) }}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                {{ form_label(form.sousTitre) }}
+                                {{ form_widget(form.sousTitre) }}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                {{ form_label(form.ssousTitre) }}
+                                {{ form_widget(form.ssousTitre) }}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                {{ form_label(form.publicationparent) }}
+                                {{ form_widget(form.publicationparent) }}
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                {{ form_label(form.description) }}
+                                {{ form_widget(form.description) }}
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                {{ form_label(form.contenu) }}
+                                {{ form_widget(form.contenu) }}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                {{ form_label(form.nomImage) }}
+                                {{ form_widget(form.nomImage) }}
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {% if publication.nomImage is defined and publication.nomImage|length > 0 %}
+                                    <img src="{{ asset('uploads/pub_' ~ publication.id ~ '/' ~ publication.nomImage) }}"  alt="" style="height: 30px;">
+                                    <span>{{ publication.nomImage }}</span>
+                                    <input type="hidden" name="existimage" value="{{ publication.nomImage }}">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                {{ form_label(form.nomDocument) }}
+                                {{ form_widget(form.nomDocument) }}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <input type="hidden" id="urlimg" data-urlImg="{{ path('publication_mod_image') }}" >
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                {{ form_label(form.ordreAffichage) }}
+                                {{ form_widget(form.ordreAffichage) }}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                {{ form_label(form.route) }}
+                                {{ form_widget(form.route) }}
+                            </div>
+                        </div>
+                        </div>
+
+
+                        <div id="images_card">
+                            <h3 class="col-sm-12"> Autres Images</h3>
+                            <div class="row" id="ligne-1">
+                                <div class="col-sm-12">
+                                    <div class="col-sm-10">
+                                        <div class="form-group">
+                                            <input class="form-control" type="file" name="publication[photos][]" style="background-color: #ecf0f5;">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <a href="javascript:void;" class="btn btn-danger btnDelete" data-id="1">
+                                            <i class="fa fa-minus"></i>
+                                        </a>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-sm-12">
+                            <div>
+                                <a href="javascript:void;" class="btn btn-primary" id="btnAdd">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            </div>
+                        </div><br><br>
+                        
+
+                        <div class="col-sm-12" style="margin-top: 20px;">
+                            <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+                            <a class="btn btn-warning" href="{{ path('app_publication_index')}}">Retour à la liste</a>
+                        </div>
+                        
+                    </div>
+                {{ form_end(form) }}
+
+    </div>
+</div>
+

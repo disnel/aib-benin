@@ -1,32 +1,20 @@
-<nav class="techno_menu">
-    <ul class="nav_scroll">
-
+<!-- Nav Menu -->
+    <nav id="navmenu" class="navmenu">
+    <ul>
         {% for menu in menus %}
-            <li>
-                    <a href="{% if 'romas' in menu.route %} {{ path(menu.route, {'slug' : menu.slug }) }} {% endif %}">
-                        {{ menu.titre }}
-                    </a>
+        <li>
+            <a href="{% if menu.route %} {{ path(menu.route, {'slug' : menu.slug }) }} {% endif %}" class="{% if loop.index == 1 %}active{% endif %}">
+                {{ menu.titre }}
+            </a>
             {% if menu.getmenus()|length > 0 %}
-                {# LES SOUS MENUS #}
-                <ul class="sub-menu">
-                    {% for smenu in menu.getmenus()|sort() %}
-                            <li><a href="{% if 'romas' in smenu.route %} {{ path(smenu.route, {'slug' : smenu.slug }) }} {% endif %}">{{ smenu.titre }}</a>
-                            {% if smenu.getmenus()|length > 0 %}
-                                {# LES SOUS SOUS MENUS #}
-                                <ul class="sub-menu">
-                                    {% for ssmenu in smenu.getmenus() %}
-                                        <li><a href="{% if 'romas' in ssmenu.route %} {{ path(ssmenu.route, {'slug' : ssmenu.slug }) }} {% endif %}">{{ ssmenu.titre }}</a></li>
-                                    {% endfor %}
-                                </ul>
-                            {% endif %}
-                            </li>
-                    {% endfor %}
-                </ul>
+            {# LES SOUS MENUS #}
             {% endif %}
-            </li>
+        </li>
         {% endfor %}
     </ul>
-    <div class="donate-btn-header">
-        <a class="dtbtn" href="#">Nous Joindre</a>	
-    </div>				
-</nav>
+
+    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+    </nav>
+<!-- End Nav Menu -->
+
+<a class="btn-getstarted" href="#">Nous soutenir</a>

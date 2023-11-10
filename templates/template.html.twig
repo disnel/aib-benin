@@ -49,20 +49,9 @@
       </a>
 
       <!-- Nav Menu -->
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="index.html#hero" class="active">Accueil</a></li>
-          <li><a href="index.html#about">A propos</a></li>
-          <li><a href="index.html#services">Secteur</a></li>
-          <li><a href="index.html#portfolio">Nos actions</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
-          <li><a href="index.html#contact">Devenir membre</a></li>
-        </ul>
-
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav><!-- End Nav Menu -->
-
-      <a class="btn-getstarted" href="#">Nous soutenir</a>
+      {# liste des menus #}
+			{{ render(controller('App\\Controller\\LibrairieController::afficherMenu')) }}
+      <!-- End Nav Menu -->
 
     </div>
 
@@ -72,58 +61,8 @@
   <main id="main">
 
     <!-- ======= Hero Section ======= -->
-    <section id="hero2">
-      <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
-
-        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
-
-        <div class="carousel-inner" role="listbox">
-
-          <!-- Slide 1 -->
-          <div class="carousel-item active" style="background-image: url({{ asset('frontend/assets/img/slide/slide-1.jpg') }})">
-            <div class="carousel-container">
-              <div class="container">
-                <h2 class="animate__animated animate__fadeInDown">Bienvenue à  <span>AID-BENIN</span></h2>
-                <p class="animate__animated animate__fadeInUp">Nous contribution à la promotion de l’eau potable pour tous et l’assainissement du milieu</p>
-                <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Lire plus</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 2 -->
-          <div class="carousel-item" style="background-image: url({{ asset('frontend/assets/img/slide/slide-2.jpg') }})">
-            <div class="carousel-container">
-              <div class="container">
-                <h2 class="animate__animated animate__fadeInDown">La force de la solidarité</h2>
-                <p class="animate__animated animate__fadeInUp"> Nous contribuons à faciliter l’accès aux services sociaux des communautés les plus vulnérables</p>
-                <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Lire plus</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 3 -->
-          <div class="carousel-item" style="background-image: url({{ asset('frontend/assets/img/slide/slide-3.jpg') }})">
-            <div class="carousel-container">
-              <div class="container">
-                <h2 class="animate__animated animate__fadeInDown">YGIENE ET EDUCATION</h2>
-                <p class="animate__animated animate__fadeInUp"> Nous promouvons l’hygiène et appuyons l’éducation des communautés à la base </p>
-                <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Lire plus</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-        </a>
-
-        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-        </a>
-
-      </div>
-    </section>
+    {# AFFICHAGE DU SLIDE #}
+		{{ render(controller('App\\Controller\\LibrairieController::afficherSlide')) }}
     <!-- End Hero -->
 
     <!-- Clients Section - Home Page -->
@@ -634,101 +573,8 @@
     <!-- End Testimonials Section -->
 
     <!-- Recent-posts Section - Home Page -->
-    {#<section id="recent-posts" class="recent-posts">
-
-      <!--  Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Nos dernières actions</h2>
-        <p>Notre parcours</p>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <article>
-
-              <div class="post-img">
-                <img src="{{ asset('frontend/assets/img/blog/blog-1.jpg') }}" alt="" class="img-fluid">
-              </div>
-
-              <p class="post-category">Politics</p>
-
-              <h2 class="title">
-                <a href="blog-details.html">Dolorum optio tempore voluptas dignissimos</a>
-              </h2>
-
-              <div class="d-flex align-items-center">
-                <img src="{{ asset('frontend/assets/img/blog/blog-author.jpg') }}" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author">Maria Doe</p>
-                  <p class="post-date">
-                    <time datetime="2022-01-01">Jan 1, 2022</time>
-                  </p>
-                </div>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <article>
-
-              <div class="post-img">
-                <img src="{{ asset('frontend/assets/img/blog/blog-2.jpg') }}" alt="" class="img-fluid">
-              </div>
-
-              <p class="post-category">Sports</p>
-
-              <h2 class="title">
-                <a href="blog-details.html">Nisi magni odit consequatur autem nulla dolorem</a>
-              </h2>
-
-              <div class="d-flex align-items-center">
-                <img src="{{ asset('frontend/assets/img/blog/blog-author-2.jpg') }}" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author">Allisa Mayer</p>
-                  <p class="post-date">
-                    <time datetime="2022-01-01">Jun 5, 2022</time>
-                  </p>
-                </div>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <article>
-
-              <div class="post-img">
-                <img src="{{ asset('frontend/assets/img/blog/blog-3.jpg') }}" alt="" class="img-fluid">
-              </div>
-
-              <p class="post-category">Entertainment</p>
-
-              <h2 class="title">
-                <a href="blog-details.html">Possimus soluta ut id suscipit ea ut in quo quia et soluta</a>
-              </h2>
-
-              <div class="d-flex align-items-center">
-                <img src="{{ asset('frontend/assets/img/blog/blog-author-3.jpg') }}" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author">Mark Dower</p>
-                  <p class="post-date">
-                    <time datetime="2022-01-01">Jun 22, 2022</time>
-                  </p>
-                </div>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-        </div><!-- End recent posts list -->
-
-      </div>
-
-    </section>#}
+    {# DERNIERES PUBLICATION #}
+		{{ render(controller('App\\Controller\\LibrairieController::afficherDernierePublication')) }}
     <!-- End Recent-posts Section -->
 
     <!-- Contact Section - Home Page -->

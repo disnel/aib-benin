@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<title>Publication</title>
+
+{% block body %}
+    <h1>Publication</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ publication.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ publication.titre }}</td>
+            </tr>
+            <tr>
+                <th>SousTitre</th>
+                <td>{{ publication.sousTitre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ publication.description }}</td>
+            </tr>
+            <tr>
+                <th>TitreImage</th>
+                <td>{{ publication.titreImage }}</td>
+            </tr>
+            <tr>
+                <th>Contenu</th>
+                <td>{{ publication.contenu }}</td>
+            </tr>
+            <tr>
+                <th>NomImage</th>
+                <td>{{ publication.nomImage }}</td>
+            </tr>
+            <tr>
+                <th>NomDocument</th>
+                <td>{{ publication.nomDocument }}</td>
+            </tr>
+            <tr>
+                <th>Icon</th>
+                <td>{{ publication.icon }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{{ publication.created ? publication.created|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{{ publication.updated ? publication.updated|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Deleted</th>
+                <td>{{ publication.deleted ? publication.deleted|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>EstActif</th>
+                <td>{{ publication.estActif ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>EstSlide</th>
+                <td>{{ publication.estSlide ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('publication_index') }}">back to list</a>
+
+    <a href="{{ path('publication_edit', {'id': publication.id}) }}">edit</a>
+
+    {{ include('publication/_delete_form.html.twig') }}
+{% endblock %}

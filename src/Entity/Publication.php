@@ -56,6 +56,12 @@ class Publication
     #[ORM\Column]
     private ?bool $estMasque = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $route = null;
+
+    #[ORM\Column]
+    private ?bool $estActif = null;
+
     #[ORM\Column(nullable: true)]
     private ?int $ordreAffichage = null;
 
@@ -303,6 +309,30 @@ class Publication
     public function setOrdreAffichage(?int $ordreAffichage): static
     {
         $this->ordreAffichage = $ordreAffichage;
+
+        return $this;
+    }
+
+    public function isEstActif(): ?bool
+    {
+        return $this->estActif;
+    }
+
+    public function setEstActif(bool $estActif): static
+    {
+        $this->estActif = $estActif;
+
+        return $this;
+    }
+
+    public function getRoute(): ?string
+    {
+        return $this->route;
+    }
+
+    public function setRoute(?string $route): static
+    {
+        $this->route = $route;
 
         return $this;
     }

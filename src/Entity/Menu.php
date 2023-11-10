@@ -34,8 +34,14 @@ class Menu
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $slug = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $route = null;
+
     #[ORM\OneToMany(mappedBy: 'menu', targetEntity: Publication::class)]
     private Collection $publications;
+
+    #[ORM\Column]
+    private ?bool $estActif = null;
 
     #[ORM\Column]
     private ?bool $estMasque = null;
@@ -212,6 +218,30 @@ class Menu
                 $menu->setMenuparent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getRoute(): ?string
+    {
+        return $this->route;
+    }
+
+    public function setRoute(?string $route): static
+    {
+        $this->route = $route;
+
+        return $this;
+    }
+
+    public function isEstActif(): ?bool
+    {
+        return $this->estActif;
+    }
+
+    public function setEstActif(bool $estActif): static
+    {
+        $this->estActif = $estActif;
 
         return $this;
     }

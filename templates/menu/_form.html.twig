@@ -1,0 +1,70 @@
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="box box-primary">
+
+            <div class="box-header with-border">
+              <h3 class="box-title">Menu</h3>
+            </div>
+
+                {{ form_start(form) }}
+                <div class="box-body">
+
+                    {#<div class="col-sm-3">
+                    <div class="form-group">
+                        {{ form_label(form.estActif) }}
+                        {{ form_widget(form.estActif) }}
+                    </div> 
+                    </div>#}
+                    <div class="col-sm-3">
+                    <div class="form-group">
+                        {{ form_label(form.estMasque) }}
+                        {{ form_widget(form.estMasque) }}
+                    </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div class="col-sm-3">
+                    <div class="form-group">
+                        {{ form_label(form.titre) }}
+                        {{ form_widget(form.titre) }}
+                    </div>
+                    </div>
+                    <div class="col-sm-3">
+                    <div class="form-group">
+                        {{ form_label(form.sousTitre) }}
+                        {{ form_widget(form.sousTitre) }}
+                    </div>
+                    </div>
+                    <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form_label(form.route) }}
+                        {{ form_widget(form.route) }}
+                    </div>
+                    </div>
+                    <div class="col-sm-3">
+                    <div class="form-group">
+                        {{ form_label(form.ordreAffichage) }}
+                        {{ form_widget(form.ordreAffichage) }}
+                    </div>
+                    </div>
+                    <div class="col-sm-3">
+                    <div class="form-group">
+                        {{ form_label(form.icone) }}
+                        {{ form_widget(form.icone) }}
+                    </div>
+                    </div>
+                    <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form_label(form.menuparent) }}
+                        {{ form_widget(form.menuparent) }}
+                    </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+                        <a href="{{ path('app_menu_index') }}" class="btn btn-warning">Retour à la liste</a>
+                    </div>
+                    
+                </div>
+                {{ form_end(form) }}
+
+    </div>
+</div>
