@@ -1,0 +1,12 @@
+<!-- ======= Header ======= -->
+<header id="header" class="header sticky-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-end">
+
+    <a href="{{ path('app_homepage') }}" class="logo me-auto ">
+        <img src="{{ asset('frontend/assets/img/logo_aid.png') }}"  alt="">
+    </a>
+
+    {{ render(controller('App\\Controller\\LibrairieController::afficherMenu')) }}
+
+    </div>
+</header><!-- End Header -->

@@ -1,0 +1,57 @@
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="box box-primary">
+
+            <div class="box-header with-border">
+              <h3 class="box-title">Coordonnées</h3>
+            </div>
+
+                {{ form_start(form) }}
+                <div class="box-body">
+
+                    <div class="col-sm-3">
+                    <div class="form-group">
+                        {{ form_label(form.adresse) }}
+                        {{ form_widget(form.adresse) }}
+                    </div> 
+                    </div>
+                    <div class="col-sm-3">
+                    <div class="form-group">
+                        {{ form_label(form.telephone) }}
+                        {{ form_widget(form.telephone) }}
+                    </div>
+                    </div>
+                    <div class="col-sm-3">
+                    <div class="form-group">
+                        {{ form_label(form.telephone2) }}
+                        {{ form_widget(form.telephone2) }}
+                    </div>
+                    </div>
+                    <div class="col-sm-3">
+                    <div class="form-group">
+                        {{ form_label(form.email) }}
+                        {{ form_widget(form.email) }}
+                    </div>
+                    </div>
+                    <div class="col-sm-3">
+                    <div class="form-group">
+                        {{ form_label(form.email2) }}
+                        {{ form_widget(form.email2) }}
+                    </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form_label(form.logo) }}
+                            {{ form_widget(form.logo) }}
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+                        <a href="{{ path('app_coordonnee_index') }}" class="btn btn-warning">Retour à la liste</a>
+                    </div>
+                    
+                </div>
+                {{ form_end(form) }}
+
+    </div>
+</div>

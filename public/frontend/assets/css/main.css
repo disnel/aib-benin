@@ -165,8 +165,10 @@ section {
 }
 
 .header .logo img {
-  max-height: 40px;
-  margin-right: 6px;
+  /* max-height: 40px; */
+  /* margin-right: 6px; */
+  position: obsolute;
+  height: 60px;
 }
 
 .header .logo h1 {
@@ -200,9 +202,16 @@ section {
   background: rgba(var(--primary-color-rgb), 0.85);
 }
 
+@media only screen and (max-width: 768px) {
+  .header .logo img {
+    position: obsolute;
+    height: 45px;
+  }
+}
+
 @media (max-width: 1200px) {
   .header .logo {
-    order: 1;
+    /* order: 1; */
   }
 
   .header .btn-getstarted {
@@ -707,9 +716,11 @@ section {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid rgba(var(--default-color-rgb), 0.5);
+  border: 1px solid rgba(var(--contrast-color-rgb), 1);
+  /* border: 1px solid rgba(var(--default-color-rgb), 0.5); */
   font-size: 16px;
-  color: rgba(var(--default-color-rgb), 0.5);
+  color: rgba(var(--default-color-white), 0.5);
+  /* color: rgba(var(--default-color-rgb), 0.5); */
   margin-right: 10px;
   transition: 0.3s;
 }
@@ -720,8 +731,8 @@ section {
 }
 
 .footer h4 {
-  color: var(--secondary-color);
-  /* color: var(--secondary-color);µ% */
+  color: var(--contrast-color-rgb);
+  /* color: var(--secondary-color); */
   font-size: 16px;
   font-weight: bold;
   position: relative;
@@ -755,7 +766,7 @@ section {
 }
 
 .footer .footer-links ul a {
-  color: rgba(var(--default-color-rgb), 0.8);
+  color: rgba(var(--contrast-color-rgb), 0.8);
   display: inline-block;
   line-height: 1;
 }

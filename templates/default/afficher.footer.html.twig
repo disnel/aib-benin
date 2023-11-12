@@ -1,0 +1,54 @@
+ <footer id="footer" class="footer">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-about">
+          <a href="#" class="logo d-flex align-items-center">
+            <!-- <span>Append</span> -->
+            <img src="{{ asset('frontend/assets/img/logo_aid.png') }}" style="" style="" alt="">
+          </a>
+          <p>Siège social : quartier Lémam bogou 2è Arrondissement 200 mètre de la direction MTN route de Natitingou</p>
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Liens utiles</h4>
+          <ul>
+            {% for menu in menus %}
+                <li><a href="{% if menu.route != null %}{{ path('app_menus',{ 'slug': menu.slug }) }}{% endif %}">{{ menu.titre }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Domaines</h4>
+          <ul>
+          {% for dom in domaines %}
+            <li><a href="{{ path( dom.menu.route ,{'slug': dom.menu.slug }) }}">{{ dom.titre }}</a></li>
+          {% endfor %}
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Notre adresse</h4>
+          <p>{{ coordonnee[0].adresse }}</p>
+          <p class="mt-4"><strong>Telephone:</strong> <span>{{ coordonnee[0].telephone }} {% if coordonnee[0].telephone2 %}{{ ' | ' ~ coordonnee[0].telephone2 }}{% endif %}    </span></p>
+          <p><strong>Email:</strong> <span>{{ coordonnee[0].email2 }} {% if coordonnee[0].email %}{{ ' / ' ~ coordonnee[0].email }}{% endif %}</span></p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>&copy; <span>Copyright</span> <strong class="px-1">Aid-BENIN</strong> <span>Tous droits réservés</span></p>
+        <div class="credits">
+        Conçu par <a href="#">Disnel</a>
+      </div>
+    </div>
+
+  </footer>

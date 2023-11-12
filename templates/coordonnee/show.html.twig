@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Coordonnee{% endblock %}
+
+{% block body %}
+    <h1>Coordonnee</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ coordonnee.id }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ coordonnee.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ coordonnee.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Telephone2</th>
+                <td>{{ coordonnee.telephone2 }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ coordonnee.email }}</td>
+            </tr>
+            <tr>
+                <th>Email2</th>
+                <td>{{ coordonnee.email2 }}</td>
+            </tr>
+            <tr>
+                <th>Logo</th>
+                <td>{{ coordonnee.logo }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{{ coordonnee.created ? coordonnee.created|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{{ coordonnee.updated ? coordonnee.updated|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Deleted</th>
+                <td>{{ coordonnee.deleted ? coordonnee.deleted|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_coordonnee_index') }}">back to list</a>
+
+    <a href="{{ path('app_coordonnee_edit', {'id': coordonnee.id}) }}">edit</a>
+
+    {{ include('coordonnee/_delete_form.html.twig') }}
+{% endblock %}

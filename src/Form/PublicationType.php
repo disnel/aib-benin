@@ -97,8 +97,13 @@ class PublicationType extends AbstractType
                 'required' => false,
             ])
             ->add('estActif', CheckboxType::class,[
-                'label' => 'Masque',
+                'label' => 'Actif',
                 'attr' => [ 'class' => 'flat-red'],
+                'required' => false,
+            ])
+            ->add('icone', TextType::class,[
+                'label' => 'Icone',
+                'attr' => [ 'class' => 'form-control','placeholder' => 'nom de l\'icone' ],
                 'required' => false,
             ])
             ->add('ordreAffichage', IntegerType::class,[

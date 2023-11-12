@@ -6,10 +6,11 @@ use App\Entity\Menu;
 use App\Form\MenuType;
 use App\Repository\MenuRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/menu')]
 class MenuController extends AbstractController
@@ -23,7 +24,7 @@ class MenuController extends AbstractController
     }
 
     #[Route('/new/{id}', name: 'app_menu_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager,MenuRepository $mr ,$id = null): Response
+    public function new(Request $request, EntityManagerInterface $entityManager,MenuRepository $mr ,SluggerInterface $slugger,$id = null): Response
     {
         $menu = new Menu();
         if( $id != ''){
@@ -33,7 +34,13 @@ class MenuController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($menu);
+
+            $slug = $this->removeAccent($menu->getTitre());
+            $slug = strtolower($slug);
+            $slug = $slugger->slug($slug);
+            $menu->setSlug($slug);
+
+            ($id)? '' : $entityManager->persist($menu);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_menu_index', [], Response::HTTP_SEE_OTHER);

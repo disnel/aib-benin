@@ -11,6 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class MenuType extends AbstractType
 {
@@ -42,6 +43,11 @@ class MenuType extends AbstractType
                 'attr' => [ 'class' => 'form-control','placeholder' => 'sous titre du menu' ],
                 'required' => false,
             ])
+            ->add('description', TextareaType::class,[
+                'label' => 'Description',
+                'attr' => [ 'class' => 'form-control','placeholder' => 'Description du menu' ],
+                'required' => false,
+            ])
             ->add('icone', TextType::class,[
                 'label' => 'Icone',
                 'attr' => [ 'class' => 'form-control','placeholder' => 'nom de l\'icone' ],
@@ -53,7 +59,7 @@ class MenuType extends AbstractType
                 'required' => false,
             ])
             ->add('estActif', CheckboxType::class,[
-                'label' => 'Masque',
+                'label' => 'Actif',
                 'attr' => [ 'class' => 'flat-red'],
                 'required' => false,
             ])

@@ -57,6 +57,9 @@ class Publication
     private ?bool $estMasque = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    private ?string $icone = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $route = null;
 
     #[ORM\Column]
@@ -333,6 +336,18 @@ class Publication
     public function setRoute(?string $route): static
     {
         $this->route = $route;
+
+        return $this;
+    }
+
+    public function getIcone(): ?string
+    {
+        return $this->icone;
+    }
+
+    public function setIcone(?string $icone): static
+    {
+        $this->icone = $icone;
 
         return $this;
     }

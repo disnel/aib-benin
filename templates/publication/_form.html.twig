@@ -101,6 +101,8 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
+                                {{ form_label(form.icone) }}
+                                {{ form_widget(form.icone) }}
                                 <input type="hidden" id="urlimg" data-urlImg="{{ path('publication_mod_image') }}" >
                             </div>
                         </div>

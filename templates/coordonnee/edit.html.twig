@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Coordonnee{% endblock %}
+
+{% block body %}
+    <h1>Edit Coordonnee</h1>
+
+    {{ include('coordonnee/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_coordonnee_index') }}">back to list</a>
+
+    {{ include('coordonnee/_delete_form.html.twig') }}
+{% endblock %}

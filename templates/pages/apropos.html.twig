@@ -1,0 +1,123 @@
+{% extends "template.html.twig" %}
+
+{% block header %}
+    {{ render(controller('App\\Controller\\LibrairieController::afficherHeaderForotherPage')) }}
+{% endblock %}
+
+{% block main %}
+    <!-- Blog Details Page Title & Breadcrumbs -->
+    <div data-aos="fade" class="page-title">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex">
+            <div class="col-lg-8">
+              <h1>{{ menu.titre }}</h1>
+              <p class="mb-0">{{ menu.sousTitre }}e</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="breadcrumbs">
+        <div class="container">
+          <ol>
+            <li><a href="{{ path('app_homepage') }}">Accueil</a></li>
+            <li class="current">{{ menu.titre }}</li>
+          </ol>
+        </div>
+      </nav>
+    </div>
+    <!-- End Page Title -->
+
+     <!-- Blog-details Section - Blog Details Page -->
+    <section id="blog-details" class="blog-details">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-5">
+
+          <div class="col-lg-8">
+
+            <article class="article">
+
+              {# <div class="post-img">
+                <img src="{% if publication.nomImage %} {{ asset('uploads/publication/pub_' ~ publication.id ~ '/' ~ publication.nomImage ) }}{% endif %}" alt="" class="img-fluid">
+              </div> #}
+
+              <h2 class="title">{{ publications[0].titre }}</h2>
+
+              {# <div class="meta-top">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2020-01-01">Jan 1, 2022</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12 Comments</a></li>
+                </ul>
+              </div> #}
+              <!-- End meta top -->
+
+              <div class="content">
+
+                <p>
+                  {{ publications[0].sousTitre}}
+                </p>
+
+                {% if publications[0].description %}
+                    <blockquote>
+                        <p>
+                            {{ publications[0].description }}
+                        </p>
+                    </blockquote>
+                {% endif %}
+
+                <p>
+                  {{ publications[0].contenu | raw }}
+                </p>
+              </div>
+              <!-- End post content -->
+
+              {# <div class="meta-bottom">
+                <i class="bi bi-folder"></i>
+                <ul class="cats">
+                  <li><a href="javascript:;">Publication</a></li>
+                </ul>
+              </div> #}
+              <!-- End meta bottom -->
+
+            </article><!-- End post article -->
+
+
+          </div>
+
+          <div class="col-lg-4">
+
+            <div class="sidebar">
+
+              <div class="sidebar-item recent-posts">
+                <h3 class="sidebar-title">Dispositions statutaires</h3>
+                <br>
+
+                {% for pu in publications %}
+                <div class="post-item">
+                  {# <img src="{{ asset('frontend/assets/img/blog/blog-recent-1.jpg') }}" alt="" class="flex-shrink-0"> #}
+                  <div>
+                    <h4><a href="#">{{ pu.titre }}</a></h4>
+                    <p>{{ pu.sousTitre }}</p>
+                    {# <time datetime="2020-01-01">Jan 1, 2020</time> #}
+                  </div>
+                </div>
+                {% endfor %}
+                <!-- End recent post item-->
+              </div>
+              <!-- End sidebar recent posts-->
+
+            </div><!-- End Sidebar -->
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+    <!-- End Blog-details Section -->
+
+{% endblock %}

@@ -26,6 +26,9 @@ class Menu
     private ?string $sousTitre = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    private ?string $description = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $icone = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -242,6 +245,18 @@ class Menu
     public function setEstActif(bool $estActif): static
     {
         $this->estActif = $estActif;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
 
         return $this;
     }
