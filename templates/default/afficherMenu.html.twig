@@ -4,9 +4,13 @@
         
         {% for menu in menus %}
         <li class="{{ (menu.getmenus()|length > 0 ) ? 'dropdown has-dropdown' : '' }}" >
-            <a  href="{% if menu.route %} {{ path(menu.route, {'slug' : menu.slug }) }} {% endif %}" 
+            <a  href="{% if menu.route %} {{ path(menu.route, {'slug' : menu.slug }) }} {% else%} javascript:; {% endif %}" 
                 class="{% if (loop.index == 1) or (app.request.get('slug') == menu.slug)  %}active{% endif %}">
-                {{ menu.titre }}
+                {% if menu.getmenus()|length > 0 %}
+                    <span>{{ menu.titre }}</span> <i class="bi bi-chevron-down"></i>
+                {% else %}
+                    {{ menu.titre }}
+                {% endif %}
             </a>
             {% if menu.getmenus()|length > 0 %}
             {# LES SOUS MENUS #}
