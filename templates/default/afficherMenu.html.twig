@@ -1,13 +1,23 @@
 <!-- Nav Menu -->
     <nav id="navmenu" class="navmenu">
     <ul>
+        
         {% for menu in menus %}
-        <li>
-            <a href="{% if menu.route %} {{ path(menu.route, {'slug' : menu.slug }) }} {% endif %}" class="{% if loop.index == 1 %}active{% endif %}">
+        <li class="{{ (menu.getmenus()|length > 0 ) ? 'dropdown has-dropdown' : '' }}" >
+            <a  href="{% if menu.route %} {{ path(menu.route, {'slug' : menu.slug }) }} {% endif %}" 
+                class="{% if (loop.index == 1) or (app.request.get('slug') == menu.slug)  %}active{% endif %}">
                 {{ menu.titre }}
             </a>
             {% if menu.getmenus()|length > 0 %}
             {# LES SOUS MENUS #}
+            <ul class="dd-box-shadow">
+                {% for menus in menu.getmenus() %}
+                    <li>
+                        <a href="{% if menus.route %} {{ path(menus.route, {'slug' : menus.slug }) }} {% endif %}">
+                        {{ menus.titre }}</a>
+                    </li>
+                {% endfor %} 
+            </ul>
             {% endif %}
         </li>
         {% endfor %}

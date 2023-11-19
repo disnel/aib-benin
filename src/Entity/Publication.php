@@ -32,6 +32,9 @@ class Publication
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $lien = null;
+
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $contenu = null;
 
@@ -348,6 +351,18 @@ class Publication
     public function setIcone(?string $icone): static
     {
         $this->icone = $icone;
+
+        return $this;
+    }
+
+    public function getLien(): ?string
+    {
+        return $this->lien;
+    }
+
+    public function setLien(?string $lien): static
+    {
+        $this->lien = $lien;
 
         return $this;
     }

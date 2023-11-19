@@ -12,7 +12,7 @@
           <div class="row d-flex">
             <div class="col-lg-8">
               <h1>{{ menu.titre }}</h1>
-              <p class="mb-0">{{ menu.sousTitre }}e</p>
+              <p class="mb-0">{{ menu.sousTitre }}</p>
             </div>
           </div>
         </div>
@@ -43,7 +43,12 @@
                 <img src="{% if publication.nomImage %} {{ asset('uploads/publication/pub_' ~ publication.id ~ '/' ~ publication.nomImage ) }}{% endif %}" alt="" class="img-fluid">
               </div> #}
 
-              <h2 class="title">{{ publications[0].titre }}</h2>
+              {% if publication != null %}
+                <h2 class="title">{{ publication[0].titre }}</h2>
+              {% else %}
+                <h2 class="title">{{ publications[0].titre }}</h2>
+              {% endif %}
+              
 
               {# <div class="meta-top">
                 <ul>
@@ -57,30 +62,31 @@
               <div class="content">
 
                 <p>
-                  {{ publications[0].sousTitre}}
+                  {% if publication != null %}
+                    {{ publication[0].sousTitre}}
+                  {% else %}
+                    {{ publications[0].sousTitre}}
+                  {% endif %}
                 </p>
 
-                {% if publications[0].description %}
-                    <blockquote>
-                        <p>
-                            {{ publications[0].description }}
-                        </p>
-                    </blockquote>
+                {% if publication != null %}
+                  {% if publication[0].description %}
+                      <blockquote> <p>{{ publication[0].description }}</p></blockquote>
+                  {% endif %}
+                {% else %}
+                  {% if publications[0].description %}
+                      <blockquote> <p>{{ publications[0].description }}</p></blockquote>
+                  {% endif %}
                 {% endif %}
 
                 <p>
-                  {{ publications[0].contenu | raw }}
+                  {% if publication != null %}
+                    {{ publication[0].contenu | raw }}
+                  {% else %}
+                    {{ publications[0].contenu | raw }}
+                  {% endif %}
                 </p>
               </div>
-              <!-- End post content -->
-
-              {# <div class="meta-bottom">
-                <i class="bi bi-folder"></i>
-                <ul class="cats">
-                  <li><a href="javascript:;">Publication</a></li>
-                </ul>
-              </div> #}
-              <!-- End meta bottom -->
 
             </article><!-- End post article -->
 
@@ -96,14 +102,17 @@
                 <br>
 
                 {% for pu in publications %}
-                <div class="post-item">
+                <a href="{{ path('app_menus',{'slug': 'a-propos', 'id' : pu.id }) }}">
+                <div class="post-item pt-2 pb-0 px-3" style="border:1px dotted black;background-color : #b3fdcd;">
                   {# <img src="{{ asset('frontend/assets/img/blog/blog-recent-1.jpg') }}" alt="" class="flex-shrink-0"> #}
                   <div>
-                    <h4><a href="#">{{ pu.titre }}</a></h4>
+                    {# <h4><a href="#">{{ pu.titre }}</a></h4> #}
+                    <h4>{{ pu.titre }}</h4>
                     <p>{{ pu.sousTitre }}</p>
                     {# <time datetime="2020-01-01">Jan 1, 2020</time> #}
                   </div>
                 </div>
+                </a>
                 {% endfor %}
                 <!-- End recent post item-->
               </div>

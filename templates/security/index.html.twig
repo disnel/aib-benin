@@ -1,9 +1,7 @@
-
 {% extends 'backend.html.twig' %}
 
 {% block stylesheet %}
     {{ parent()}}
-    <link href="{{ asset('backend/bower_components/datatables.net-bs/css/dataTables.bootstrap.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('backend/bower_components/datatables.net-bs/css/dataTables.bootstrap.css') }}" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
@@ -13,44 +11,42 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h2>LIste des Publications</h2>
-                        <a class="btn btn-primary" href="{{ path('app_publication_new') }}">Ajout d'une publication</a>
+                        <h2>LIste des Utilisateurs</h2>
+                        <a class="btn btn-primary" href="{{ path('app_register') }}">Ajouter un utilisateur</a>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <div class="table-responsive">
+
                         <table id="example1" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Actif</th>
-                                    <th>Menu</th>
-                                    <th>Ordre</th>
-                                    <th>Slide</th>
-                                    <th>Titre Publication</th>
+                                    <th>Utilisateur</th>
+                                    {# <th>Status</th> #}
+                                    <th>Telephone</th>
                                     <th>actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            {% for publication in publications %}
+                            {% for u in users %}
                                 <tr>
-                                    <td>{{ publication.id }}</td>
-                                    <td> 
-                                        {% if publication.estActif %}
-                                            <img src="{{ asset('backend/valide.png') }}" style="width: 15px;">
-                                        {% endif %}
-                                    </td>
-                                    <td>{% if publication.menu %}{{ publication.menu.titre }}{% endif %}</td>
-                                    <td>{{ publication.ordreAffichage }}</td>
+                                    <td>{{ u.id }}</td>
+                                    <td>{{ u.nom }}</td>
+                                    <td>{{ u.telephone }}</td>
                                     <td>
-                                        {% if publication.estSlide %}
-                                            <img src="{{ asset('backend/valide.png') }}" style="width: 15px;">
-                                        {% endif %}
-                                    </td>
-                                    <td>{{ publication.titre }}</td>
-                                    <td>
-                                        <a class="btn btn-default" href="{{ path('app_publication_show', {'id': publication.id}) }}">show</a>
-                                        <a class="btn btn-default" href="{{ path('app_publication_new', {'id': publication.id}) }}">edit</a>
+                                        <div class="btn-group">
+                                        <button type="button" class="btn btn-default">Action</button>
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                            <span class="caret"></span>
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            {# <li><a href="{{ path('app_menu_show', {'id': menu.id}) }}">Détails</a></li> #}
+                                            {# <li><a href="{{ path('app_menu_new', {'id': u.id}) }}">Editer</a></li> #}
+                                            <li class="divider"></li>
+                                            {# <li><a href="{{ path('app_menu_delete', {'id': u.id}) }}">Supprimer</a></li> #}
+                                        </ul>
+                                        </div>
                                     </td>
                                 </tr>
                             {% else %}
@@ -60,7 +56,7 @@
                             {% endfor %}
                             </tbody>
                         </table>
-                        </div>
+
                     </div>
 
                     

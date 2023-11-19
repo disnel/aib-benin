@@ -1,0 +1,71 @@
+{% extends 'backend.html.twig' %}
+
+{% block stylesheet %}
+  {% include "_css_form.html.twig" %}
+{% endblock %}
+
+{% block content %}
+
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+
+            <div class="col-md-12">
+            <!-- general form elements -->
+                <div class="box box-primary">
+
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Inscription</h3>
+                    </div>
+
+                    {{ form_start(registrationForm) }}
+                    <div class="box-body">
+
+                        <div class="col-md-12">
+                            {{ form_label(registrationForm.agreeTerms)}}
+                            {{ form_widget(registrationForm.agreeTerms)}}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form_label(registrationForm.nom)}}
+                            {{ form_widget(registrationForm.nom)}}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form_label(registrationForm.telephone)}}
+                            {{ form_widget(registrationForm.telephone)}}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form_label(registrationForm.username)}}
+                            {{ form_widget(registrationForm.username)}}
+                        </div>
+                        
+                        <div class="col-md-6">
+                            {{ form_label(registrationForm.plainPassword)}}
+                            {{ form_widget(registrationForm.plainPassword)}}
+                        </div>
+                       <div style="clear: both !important;"></div>
+                        {# <div class="col-md-12 mt-4">
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        </div> #}
+
+                        <div class="col-sm-12">
+                        <br>
+                        <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+                        <a href="{{ path('app_user_index') }}" class="btn btn-warning">Retour à la liste</a>
+                    </div>
+
+                    </div>
+                    {{ form_end(registrationForm) }}
+
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </section>
+    
+{% endblock %}
+
+{% block javascripts %}
+  {% include "_js_form.html.twig" %}
+{% endblock %}
+

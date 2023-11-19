@@ -56,6 +56,11 @@ class PublicationType extends AbstractType
                 'attr' => [ 'class' => 'form-control','placeholder' => 'Description de la publication' ],
                 'required' => false,
             ])
+            ->add('lien', TextType::class,[
+                'label' => 'Url',
+                'attr' => [ 'class' => 'form-control','placeholder' => 'Le lien vers la ressource' ],
+                'required' => false,
+            ])
             ->add('contenu', TextareaType::class,[
                 'label' => 'Contenu',
                 'attr' => [ 'class' => 'form-control','placeholder' => 'Contenu de la publication' ],

@@ -17,7 +17,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-
+                        <div class="table-responsive">
                         <table id="example1" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
@@ -51,10 +51,10 @@
                                             <span class="sr-only">Toggle Dropdown</span>
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li><a href="{{ path('app_menu_show', {'id': co.id}) }}">Détails</a></li>
-                                            <li><a href="{{ path('app_menu_new', {'id': co.id}) }}">Editer</a></li>
+                                            <li><a href="{{ path('app_coordonnee_show', {'id': co.id}) }}">Détails</a></li>
+                                            <li><a href="{{ path('app_coordonnee_new', {'id': co.id}) }}">Editer</a></li>
                                             <li class="divider"></li>
-                                            <li><a href="{{ path('app_menu_delete', {'id': co.id}) }}">Supprimer</a></li>
+                                            <li><a href="{{ path('app_coordonnee_delete', {'id': co.id}) }}">Supprimer</a></li>
                                         </ul>
                                         </div>
                                     </td>
@@ -66,7 +66,7 @@
                             {% endfor %}
                             </tbody>
                         </table>
-
+                        </div>
                     </div>
 
                     
